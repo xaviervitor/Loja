@@ -17,11 +17,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Funcionario;
 
+
 /**
  *
  * @author Lucas
  */
-public class FuncionarioDAO extends DAO {
+public class FuncionarioDAO extends DAO implements Logavel {
 
     private static final String PATH = "funcionario.txt";
     private static int lastAddedId;
@@ -42,16 +43,21 @@ public class FuncionarioDAO extends DAO {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+   
     public void insert(Funcionario funcionario) {
-        super.insert(PATH,
-                ++lastAddedId + ";"
+        try {
+            FileWriter writer = new FileWriter(PATH, true);
+            writer.append(++lastAddedId + ";"
                 + funcionario.getNome() + ";"
                 + funcionario.getCpf() + ";"
-                + funcionario.getUsuario() + ";"
-                + funcionario.getSenha()
-                + System.getProperty("line.separator") // quebra de linha
-        );
+                + funcionario.getSalario()
+                + System.getProperty("line.separator")
+            );
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public List<Funcionario> selectAll() {
@@ -66,9 +72,8 @@ public class FuncionarioDAO extends DAO {
                 funcionario.setId(Integer.parseInt(dados[0]));
                 funcionario.setNome(dados[1]);
                 funcionario.setCpf(dados[2]);
-                funcionario.setUsuario(dados[3]);
-                funcionario.setSenha(dados[4]);
-
+                funcionario.setSalario(Integer.parseInt(dados[3]));
+                
                 list.add(funcionario);
             }
             return list;
@@ -78,5 +83,16 @@ public class FuncionarioDAO extends DAO {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public void insertLogin(String usuario, String senha) {
+        try {
+            FileWriter writer = new FileWriter(Logavel.PATH, true);
+            writer.append(usuario + ";" + senha + System.getProperty("line.separator"));
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

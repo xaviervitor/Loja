@@ -10,23 +10,13 @@ package model;
  * @author vitor
  */
 public class Funcionario extends Pessoa {
-    private String usuario;
-    private String senha;
+    private Integer salario;
 
-    public String getUsuario() {
-        return usuario;
+    public Integer getSalario() {
+        return salario;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setSalario(Integer salario) {
+        this.salario = salario;
     }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    
 }

@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author vitor
+ * @author lucas
  */
 public class Cliente extends Pessoa {
     private Integer telefone;

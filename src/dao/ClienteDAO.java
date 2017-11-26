@@ -21,7 +21,7 @@ import model.Cliente;
  *
  * @author Lucas
  */
-public class ClienteDAO extends DAO {
+public class ClienteDAO extends DAO implements Logavel {
 
     private static final String PATH = "cliente.txt";
     private static int lastAddedId;
@@ -78,5 +78,16 @@ public class ClienteDAO extends DAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public void insertLogin(String usuario, String senha) {
+        try {
+            FileWriter writer = new FileWriter(Logavel.PATH, true);
+            writer.append(usuario + ";" + senha + System.getProperty("line.separator"));
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

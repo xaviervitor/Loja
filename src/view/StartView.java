@@ -21,7 +21,7 @@ import model.Funcionario;
 public class StartView extends javax.swing.JFrame {
 
     /**
-     * Creates new form kkk
+     * Creates new form
      */
     public StartView() {
         initComponents();
@@ -342,14 +342,14 @@ public class StartView extends javax.swing.JFrame {
     }
 
     private void populaTabelaFuncionario() {
-        DefaultTableModel model = new DefaultTableModel(new String[]{"ID", "Nome", "CPF", "Usuario"}, 0);
+        DefaultTableModel model = new DefaultTableModel(new String[]{"ID", "Nome", "CPF", "Salario"}, 0);
         
         jTable3.setModel(model);
         
         List<Funcionario> funcionarios = new FuncionarioDAO().selectAll();
 
         for (Funcionario funcionario : funcionarios) {
-            model.addRow(new Object[]{funcionario.getId(), funcionario.getNome(), funcionario.getCpf(), funcionario.getUsuario()});
+            model.addRow(new Object[]{funcionario.getId(), funcionario.getNome(), funcionario.getCpf(), funcionario.getSalario()});
         }
     }
 
