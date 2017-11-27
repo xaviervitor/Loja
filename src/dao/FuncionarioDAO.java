@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.io.BufferedReader;
@@ -17,8 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Funcionario;
 
-
 /**
+ * Classe que persiste instâncias de Funcionário
  *
  * @author Lucas
  */
@@ -27,6 +22,14 @@ public class FuncionarioDAO extends DAO implements Logavel {
     private static final String PATH = "funcionario.txt";
     private static int lastAddedId;
 
+    /**
+     * Método que inicializa arquivos de persistência de funcionário e
+     * inicializa o atributo lastAddedId.
+     *
+     * Se o arquivo não existir, é criado e é atribuido 0 ao atributo
+     * lastAddedId. Se o arquivo existir, o atribuido ao atributo o maior id
+     * presente no arquivo.
+     */
     @Override
     public void init() {
         File file = new File(PATH);
@@ -43,16 +46,21 @@ public class FuncionarioDAO extends DAO implements Logavel {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-   
+
+    /**
+     * Persiste o funcionario especificado por parâmetro no arquivo de
+     * funcionários.
+     *
+     * @param funcionario O funcionário a ser inserido
+     */
     public void insert(Funcionario funcionario) {
         try {
             FileWriter writer = new FileWriter(PATH, true);
             writer.append(++lastAddedId + ";"
-                + funcionario.getNome() + ";"
-                + funcionario.getCpf() + ";"
-                + funcionario.getSalario()
-                + System.getProperty("line.separator")
+                    + funcionario.getNome() + ";"
+                    + funcionario.getCpf() + ";"
+                    + funcionario.getSalario()
+                    + System.getProperty("line.separator")
             );
             writer.close();
         } catch (IOException ex) {
@@ -60,6 +68,11 @@ public class FuncionarioDAO extends DAO implements Logavel {
         }
     }
 
+    /**
+     * Recupera os dados persistidos no arquivo de funcionários.
+     *
+     * @return Funcionários persistidos no banco de dados
+     */
     public List<Funcionario> selectAll() {
         try {
             BufferedReader br = new BufferedReader(new FileReader(PATH));
@@ -73,7 +86,7 @@ public class FuncionarioDAO extends DAO implements Logavel {
                 funcionario.setNome(dados[1]);
                 funcionario.setCpf(dados[2]);
                 funcionario.setSalario(Integer.parseInt(dados[3]));
-                
+
                 list.add(funcionario);
             }
             return list;

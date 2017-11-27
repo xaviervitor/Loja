@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 /**
@@ -10,6 +5,7 @@ package model;
  * @author lucas
  */
 public class Cliente extends Pessoa {
+
     private Integer telefone;
     private String endereco;
 
@@ -28,5 +24,5 @@ public class Cliente extends Pessoa {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    
+
 }

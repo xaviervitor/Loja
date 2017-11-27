@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.io.BufferedReader;
@@ -17,24 +12,40 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Classe abstrata que realiza a persistência dos dados nos respectivos
+ * arquivos.
  *
  * @author vitor
  */
 public abstract class DAO {
-    
+
     abstract public void init();
-    
+
+    /**
+     * Registra instância fornecida num caminho de arquivo fornecido. Usada para
+     * persistência de todas as Classes.
+     *
+     * @param path Caminho do arquivo
+     * @param register Registro fornecido
+     */
     public void insert(String path, String register) {
         try {
             FileWriter writer = new FileWriter(path, true);
             writer.append(register);
             writer.close();
         } catch (IOException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private List<Integer> getAllIds(String path){
+
+    /**
+     * Busca por todos os ids em um dado arquivo.
+     *
+     * @param path Caminho para o arquivo de persistência
+     *
+     * @return Lista de ids encontrados no arquivo
+     */
+    private List<Integer> getAllIds(String path) {
         List<Integer> list = new ArrayList<>();
 
         try {
@@ -49,14 +60,21 @@ public abstract class DAO {
             }
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return list;
     }
-    
+
+    /**
+     * Retorna o id máximo registrado em um dos arquivos de persistência.
+     *
+     * @param path Caminho para o arquivo de persistência
+     *
+     * @return Máximo id encontrado no arquivo
+     */
     protected int getMaxId(String path) {
         return Collections.max(getAllIds(path));
     }

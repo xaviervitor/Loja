@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import dao.CarroDAO;
@@ -176,7 +171,7 @@ public class CadastroCarroView extends javax.swing.JFrame {
         carro.setCor(jTextField5.getText());
 
         new CarroDAO().insert(carro);
-        
+
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

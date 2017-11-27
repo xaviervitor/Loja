@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.io.BufferedReader;
@@ -18,6 +13,7 @@ import java.util.logging.Logger;
 import model.Carro;
 
 /**
+ * Classe que persiste instâncias de Carro
  *
  * @author Lucas
  */
@@ -26,6 +22,14 @@ public class CarroDAO extends DAO {
     private static final String PATH = "carro.txt";
     private static int lastAddedId;
 
+    /**
+     * Método que inicializa arquivos de persistência de carro e inicializa o
+     * atributo lastAddedId.
+     *
+     * Se o arquivo não existir, é criado e é atribuido 0 ao atributo
+     * lastAddedId. Se o arquivo existir, o atribuido ao atributo o maior id
+     * presente no arquivo.
+     */
     @Override
     public void init() {
         File file = new File(PATH);
@@ -43,9 +47,14 @@ public class CarroDAO extends DAO {
         }
     }
 
+    /**
+     * Persiste o carro especificado por parâmetro no arquivo de carros.
+     *
+     * @param carro O carro a ser inserido
+     */
     public void insert(Carro carro) {
-        super.insert(PATH, 
-                ++lastAddedId + ";" 
+        super.insert(PATH,
+                ++lastAddedId + ";"
                 + carro.getChassi() + ";"
                 + carro.getFabricante() + ";"
                 + carro.getModelo() + ";"
@@ -56,6 +65,11 @@ public class CarroDAO extends DAO {
         );
     }
 
+    /**
+     * Recupera os dados persistidos no arquivo de carros.
+     *
+     * @return Carros persistidos no banco de dados
+     */
     public List<Carro> selectAll() {
         try {
             BufferedReader br = new BufferedReader(new FileReader(PATH));
@@ -63,7 +77,7 @@ public class CarroDAO extends DAO {
             String linha;
             while ((linha = br.readLine()) != null) {
                 String[] dados = linha.split(";");
-                
+
                 Carro carro = new Carro();
                 carro.setId(Integer.parseInt(dados[0]));
                 carro.setChassi(dados[1]);
@@ -72,7 +86,7 @@ public class CarroDAO extends DAO {
                 carro.setVersao(dados[4]);
                 carro.setAno(Integer.parseInt(dados[5]));
                 carro.setCor(dados[6]);
-                
+
                 list.add(carro);
             }
             return list;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.io.BufferedReader;
@@ -18,6 +13,7 @@ import java.util.logging.Logger;
 import model.Cliente;
 
 /**
+ * Classe que persiste instâncias de Cliente.
  *
  * @author Lucas
  */
@@ -26,6 +22,14 @@ public class ClienteDAO extends DAO implements Logavel {
     private static final String PATH = "cliente.txt";
     private static int lastAddedId;
 
+    /**
+     * Método que inicializa arquivos de persistência de cliente e inicializa o
+     * atributo lastAddedId.
+     *
+     * Se o arquivo não existir, é criado e é atribuido 0 ao atributo
+     * lastAddedId. Se o arquivo existir, o atribuido ao atributo o maior id
+     * presente no arquivo.
+     */
     @Override
     public void init() {
         File file = new File(PATH);
@@ -43,6 +47,11 @@ public class ClienteDAO extends DAO implements Logavel {
         }
     }
 
+    /**
+     * Persiste o cliente especificado por parâmetro no arquivo de clientes.
+     *
+     * @param cliente O cliente a ser inserido
+     */
     public void insert(Cliente cliente) {
         super.insert(PATH,
                 ++lastAddedId + ";"
@@ -53,7 +62,12 @@ public class ClienteDAO extends DAO implements Logavel {
                 + System.getProperty("line.separator") // quebra de linha
         );
     }
-    
+
+    /**
+     * Recupera os dados persistidos no arquivo de clientes.
+     *
+     * @return Clientes persistidos no banco de dados
+     */
     public List<Cliente> selectAll() {
         try {
             BufferedReader br = new BufferedReader(new FileReader(PATH));
@@ -61,14 +75,14 @@ public class ClienteDAO extends DAO implements Logavel {
             String linha;
             while ((linha = br.readLine()) != null) {
                 String[] dados = linha.split(";");
-                
+
                 Cliente cliente = new Cliente();
                 cliente.setId(Integer.parseInt(dados[0]));
                 cliente.setCpf(dados[1]);
                 cliente.setTelefone(Integer.parseInt(dados[2]));
                 cliente.setNome(dados[3]);
                 cliente.setEndereco(dados[4]);
-                
+
                 list.add(cliente);
             }
             return list;

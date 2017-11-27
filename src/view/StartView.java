@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import dao.CarroDAO;
@@ -254,7 +249,7 @@ public class StartView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new CadastroFuncionarioView().setVisible(true);   
+        new CadastroFuncionarioView().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -329,11 +324,14 @@ public class StartView extends javax.swing.JFrame {
     private javax.swing.JTable jTable4;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Preenche tabela de Carros com os dados persistidos no banco.
+     */
     private void populaTabelaCarro() {
         DefaultTableModel model = new DefaultTableModel(new String[]{"ID", "Chassi", "Fabricante", "Modelo", "Versao", "Ano", "Cor"}, 0);
-        
+
         jTable1.setModel(model);
-        
+
         List<Carro> carros = new CarroDAO().selectAll();
 
         for (Carro carro : carros) {
@@ -341,11 +339,14 @@ public class StartView extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Recupera os dados persistidos no arquivo de carros.
+     */
     private void populaTabelaFuncionario() {
         DefaultTableModel model = new DefaultTableModel(new String[]{"ID", "Nome", "CPF", "Salario"}, 0);
-        
+
         jTable3.setModel(model);
-        
+
         List<Funcionario> funcionarios = new FuncionarioDAO().selectAll();
 
         for (Funcionario funcionario : funcionarios) {
@@ -353,13 +354,16 @@ public class StartView extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Recupera os dados persistidos no arquivo de carros.
+     */
     private void populaTabelaCliente() {
-        DefaultTableModel model = new DefaultTableModel(new String[]{"ID", "Nome", "CPF", "Telefone","Endereco"}, 0);
-        
+        DefaultTableModel model = new DefaultTableModel(new String[]{"ID", "Nome", "CPF", "Telefone", "Endereco"}, 0);
+
         jTable4.setModel(model);
-        
+
         List<Cliente> clientes = new ClienteDAO().selectAll();
-        
+
         for (Cliente cliente : clientes) {
             model.addRow(new Object[]{cliente.getId(), cliente.getNome(), cliente.getCpf(), cliente.getTelefone(), cliente.getEndereco()});
         }

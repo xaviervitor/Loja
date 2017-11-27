@@ -11,13 +11,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import view.LoginView;
 
+/**
+ * Classe principal. Inicializa todos os arquivos de persistência para o banco
+ * de dados / controle de login e cria a visualização de login para inicializar
+ * a interface gráfica.
+ *
+ * @author vitor
+ */
 public class Loja {
 
     public static void main(String[] args) {
+
+        // Inicializa os arquivos e as constantes de inserção no banco de dados.
         new CarroDAO().init();
         new FuncionarioDAO().init();
         new ClienteDAO().init();
-        
+
+        // Cria o arquivo para controle de login, se não existir.
         File file = new File(Logavel.PATH);
         if (!file.exists()) {
             try {
@@ -27,8 +37,7 @@ public class Loja {
                 Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         new LoginView().setVisible(true);
     }
-
 }

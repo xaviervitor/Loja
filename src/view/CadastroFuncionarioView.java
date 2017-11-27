@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import dao.FuncionarioDAO;
 import model.Funcionario;
-
 
 /**
  *
@@ -163,9 +157,9 @@ public class CadastroFuncionarioView extends javax.swing.JFrame {
         funcionario.setCpf(jTextField3.getText());
         funcionario.setSalario(Integer.parseInt(jTextField6.getText()));
         new FuncionarioDAO().insert(funcionario);
-        
+
         new FuncionarioDAO().insertLogin(jTextField4.getText(), jTextField5.getText());
-        
+
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
