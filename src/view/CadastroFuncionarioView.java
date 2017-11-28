@@ -10,7 +10,7 @@ import model.Funcionario;
 public class CadastroFuncionarioView extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadastroFucionarioView
+     * Creates new form CadastroFuncionarioView
      */
     public CadastroFuncionarioView() {
         initComponents();
@@ -156,8 +156,8 @@ public class CadastroFuncionarioView extends javax.swing.JFrame {
         funcionario.setNome(jTextField2.getText());
         funcionario.setCpf(jTextField3.getText());
         funcionario.setSalario(Integer.parseInt(jTextField6.getText()));
+        
         new FuncionarioDAO().insert(funcionario);
-
         new FuncionarioDAO().insertLogin(jTextField4.getText(), jTextField5.getText());
 
         this.dispose();

@@ -9,12 +9,12 @@ import dao.Logavel;
 
 /**
  *
- * @author vitor
+ * @author Vitor
  */
 public class LoginView extends javax.swing.JFrame {
 
     /**
-     * Creates new form.
+     * Creates new form LoginView
      */
     public LoginView() {
         initComponents();

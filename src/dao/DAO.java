@@ -23,10 +23,10 @@ public abstract class DAO {
 
     /**
      * Registra instância fornecida num caminho de arquivo fornecido. Usada para
-     * persistência de todas as Classes.
+     * persistência de todas as classes de modelo.
      *
-     * @param path Caminho do arquivo
-     * @param register Registro fornecido
+     * @param path caminho do arquivo
+     * @param register registro fornecido
      */
     public void insert(String path, String register) {
         try {
@@ -41,9 +41,9 @@ public abstract class DAO {
     /**
      * Busca por todos os ids em um dado arquivo.
      *
-     * @param path Caminho para o arquivo de persistência
+     * @param path caminho para o arquivo de persistência
      *
-     * @return Lista de ids encontrados no arquivo
+     * @return lista de ids encontrados no arquivo
      */
     private List<Integer> getAllIds(String path) {
         List<Integer> list = new ArrayList<>();
@@ -71,9 +71,9 @@ public abstract class DAO {
     /**
      * Retorna o id máximo registrado em um dos arquivos de persistência.
      *
-     * @param path Caminho para o arquivo de persistência
+     * @param path caminho para o arquivo de persistência
      *
-     * @return Máximo id encontrado no arquivo
+     * @return máximo id encontrado no arquivo
      */
     protected int getMaxId(String path) {
         return Collections.max(getAllIds(path));

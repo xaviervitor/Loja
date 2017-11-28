@@ -50,7 +50,7 @@ public class CarroDAO extends DAO {
     /**
      * Persiste o carro especificado por parâmetro no arquivo de carros.
      *
-     * @param carro O carro a ser inserido
+     * @param carro o carro a ser inserido
      */
     public void insert(Carro carro) {
         super.insert(PATH,
@@ -68,7 +68,7 @@ public class CarroDAO extends DAO {
     /**
      * Recupera os dados persistidos no arquivo de carros.
      *
-     * @return Carros persistidos no banco de dados
+     * @return carros persistidos no banco de dados
      */
     public List<Carro> selectAll() {
         try {

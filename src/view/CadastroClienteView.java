@@ -10,7 +10,7 @@ import model.Cliente;
 public class CadastroClienteView extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadastroCarroView
+     * Creates new form CadastroClienteView
      */
     public CadastroClienteView() {
         initComponents();
@@ -181,7 +181,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
         cliente.setEndereco(jTextField6.getText());
 
         new ClienteDAO().insert(cliente);
-
         new ClienteDAO().insertLogin(jTextField4.getText(), jTextField7.getText());
 
         this.dispose();

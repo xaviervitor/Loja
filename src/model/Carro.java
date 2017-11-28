@@ -2,7 +2,7 @@ package model;
 
 /**
  *
- * @author vitor
+ * @author Vitor
  */
 public class Carro {
 

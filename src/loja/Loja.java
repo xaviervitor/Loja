@@ -16,7 +16,7 @@ import view.LoginView;
  * de dados / controle de login e cria a visualização de login para inicializar
  * a interface gráfica.
  *
- * @author vitor
+ * @author Vitor
  */
 public class Loja {
 

@@ -1,8 +1,8 @@
 package dao;
 
 /**
- * Todas as implementacoes dessa classe terão o login garantido e controlado no
- * sistema
+ * Todas as implementacoes dessa interface terão o login garantido e controlado
+ * no sistema
  *
  * @author Lucas
  */
@@ -15,8 +15,8 @@ public interface Logavel {
      * realizar login no sistema.
      *
      * @author Vitor
-     * @param usuario Login do usuário
-     * @param senha Senha do usuário
+     * @param usuario login do usuário
+     * @param senha senha do usuário
      *
      */
     void insertLogin(String usuario, String senha);

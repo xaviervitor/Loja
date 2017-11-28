@@ -50,7 +50,7 @@ public class ClienteDAO extends DAO implements Logavel {
     /**
      * Persiste o cliente especificado por parâmetro no arquivo de clientes.
      *
-     * @param cliente O cliente a ser inserido
+     * @param cliente o cliente a ser inserido
      */
     public void insert(Cliente cliente) {
         super.insert(PATH,
@@ -66,7 +66,7 @@ public class ClienteDAO extends DAO implements Logavel {
     /**
      * Recupera os dados persistidos no arquivo de clientes.
      *
-     * @return Clientes persistidos no banco de dados
+     * @return clientes persistidos no banco de dados
      */
     public List<Cliente> selectAll() {
         try {

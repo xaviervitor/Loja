@@ -2,7 +2,7 @@ package model;
 
 /**
  *
- * @author lucas
+ * @author Lucas
  */
 public class Cliente extends Pessoa {
 

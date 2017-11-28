@@ -51,7 +51,7 @@ public class FuncionarioDAO extends DAO implements Logavel {
      * Persiste o funcionario especificado por parâmetro no arquivo de
      * funcionários.
      *
-     * @param funcionario O funcionário a ser inserido
+     * @param funcionario o funcionário a ser inserido
      */
     public void insert(Funcionario funcionario) {
         try {
@@ -71,7 +71,7 @@ public class FuncionarioDAO extends DAO implements Logavel {
     /**
      * Recupera os dados persistidos no arquivo de funcionários.
      *
-     * @return Funcionários persistidos no banco de dados
+     * @return funcionários persistidos no banco de dados
      */
     public List<Funcionario> selectAll() {
         try {
